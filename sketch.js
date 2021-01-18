@@ -87,7 +87,7 @@ function drawRoad() {
 
 function drawCharacter() {
   character.display();
-}
+}  
 
 function keyPressed() {
   if (keyCode == LEFT_ARROW) {
@@ -116,8 +116,18 @@ function meetObs() {
 function meetBlue() {
   var retObs = meetObs();
   if (retObs == obs1 && obs1.col == 'blue') {
+    if (retObs == obs1) {
+      obs1.disappear();
+    } else if (retObs == obs2) {
+      obs2.disappear();
+    }
     return true;
   } else if (retObs == obs2 && obs2.col == 'blue') {
+    if (retObs == obs1) {
+      obs1.disappear();
+    } else if (retObs == obs2) {
+      obs2.disappear();
+    }
     return true;
   }
 }
@@ -129,7 +139,7 @@ function meetRed() {
   } else if (retObs == obs2 && obs2.col == 'red') {
     return true;
   }
-}
+} 
 
 function calcScore() {
   const prevScore = parseInt(scoreElem.html().substring(13));
@@ -139,7 +149,6 @@ function calcScore() {
     gameState = false;
     //scoreElem.html('your score : ' + (prevScore - 100));
   }
-
 }
 
 function drawLines() {
@@ -158,10 +167,10 @@ function drawLines() {
   pop();
 }
 
-function windowResized() {
-  //this detects when the window is resized, such as entering fullscreen mode, or changing orientation of the device.
-  resizeCanvas(windowWidth, windowHeight); //resizes the canvas to the new dimensions
-}
+// function windowResized() {
+//   //this detects when the window is resized, such as entering fullscreen mode, or changing orientation of the device.
+//   resizeCanvas(windowWidth, windowHeight); //resizes the canvas to the new dimensions
+// }
 
 //This detects if the prototype is opened in Soli Sandbox, and sends an alert to the user that soli functionality will not work in other apps/browswe
 //if(!navigator.userAgent.includes("Soli Sandbox")){ alert("This prototype needs to be opened in Soli Sandbox in order to receive Soli Events. Soli functionality will not work.");} else {console.log("Soli Sandbox Detected");}
